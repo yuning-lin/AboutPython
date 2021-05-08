@@ -1,5 +1,3 @@
-# SideProject
-
 ## Python Package
 * Requests / BeatifulSoup
 * Pandas / Numpy

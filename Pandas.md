@@ -109,4 +109,10 @@ EX：計算不同群的平均值、百分比
 grouped1 = merged2.groupby(['selected']).order.mean().reset_index()
 grouped2 = merged2.groupby(['selected','_merge']).order.mean().reset_index()
 grouped3 = merged2.groupby(['selected','_merge']).order.sum().groupby(level=[1]).apply(lambda x:x/x.sum()).reset_index()
+
+groupby_action = merged2.groupby(['selected','_merge'])
+print(groupby_action.groups) # 取得所有 group 的 key & index
+for key, group in groupby_action: # groupby 做迴圈
+    print(key)
+    print(group)
 ```

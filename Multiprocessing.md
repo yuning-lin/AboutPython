@@ -1,11 +1,11 @@
-## 平行運算
+## 多線程
 ### 引入套件
 ```python
 import concurrent.futures # 平行運算
 import tqdm # 呈現運算進度條
 ```
 ### map
-將較複雜的欄位計算做平行處理
+EX：將較複雜的欄位計算做平行處理
 ```python
 with concurrent.futures.ProcessPoolExecutor(4) as pool:
     data.loc[mask, 'col_name'] = list(
@@ -20,7 +20,7 @@ with concurrent.futures.ProcessPoolExecutor(4) as pool:
     )
 ```
 ### submit
-將 dataframe 用 groupby 做切分，不同 group 個別丟入做平行運算  
+EX：將 dataframe 用 groupby 做切分，不同 group 個別丟入做平行運算  
 ```python
 data_lst = []
 with concurrent.futures.ProcessPoolExecutor(max_workers=4) as executor:

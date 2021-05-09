@@ -1,4 +1,5 @@
 ## 多線程
+當執行的運算不會有先後順序影響才可以使用此法讓運算更有效率  
 ### 引入套件
 ```python
 import concurrent.futures # 平行運算

@@ -86,7 +86,7 @@ merged2 = df.merge(concat_by_col, on='id', how='right', indicator=True)
 isna：過濾出 dataframe 某欄位為空值的列  
 isin：過濾出 dataframe 某欄位存在指定值的列  
 邏輯運算子：過濾出某欄位特定值的列  
-```pyhon
+```python
 print(merged2[merged2.order.isna()])
 print(merged2[~merged2.order.isna()])
 print(merged2[merged2._merge=='right_only'])

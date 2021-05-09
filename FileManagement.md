@@ -37,7 +37,7 @@ shutil.move(來源檔案或目錄,目的地) # 移動檔案或目錄
 import glob
 ```
 ### 常用功能
-搜尋目錄下指定搜尋的檔案副檔名或檔名正則表達式  
+搜尋目錄下指定搜尋的副檔名或符合正則表達式的檔名  
 ```python
 files = glob.glob('*.txt')+glob.glob('./[0-9].py')
 for i in files:

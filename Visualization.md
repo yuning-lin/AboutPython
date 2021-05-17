@@ -49,6 +49,27 @@ plt.legend()
 ```
 
 ### 顯示中文
+#### 法一：
+1. 找到儲存 matplotlibrc 設定檔的位置
+2. 開啟 matplotlibrc 設定檔，找到開頭為 #font.serif、#font.sans-serif 的兩行
+3. 皆去掉行頭的 #，並加入 SimHei,
+4. 再找到 #axes.unicode_minus 這行，移除 #，並設定為 False
+
+#### 法二：
+直接透過 rcParams 修改成如法一的設定：
+```python
+import matplotlib.pyplot as plt
+plt.rcParams['font.sans-serif'] = 'SimHei'
+plt.rcParams['axes.unicode_minus'] = False
+```
+
+#### 法三：
+若是本身即沒有中文字體，前往下列網址下載字體 SimHei
+https://link.zhihu.com/?target=https%3A//www.fontpalace.com/not-found/
+將下載的字體放入下列路徑：
+.\Lib\site-packages\matplotlib\mpl-data\fonts\ttf
+並重複法一的動作
+
 ## bokeh
 ### 引入套件
 ```python

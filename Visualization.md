@@ -64,11 +64,11 @@ plt.rcParams['axes.unicode_minus'] = False
 ```
 
 #### 法三：
-若是本身即沒有中文字體，前往下列網址下載字體 SimHei
-https://link.zhihu.com/?target=https%3A//www.fontpalace.com/not-found/
-將下載的字體放入下列路徑：
-.\Lib\site-packages\matplotlib\mpl-data\fonts\ttf
-並重複法一的動作
+若是本身即沒有中文字體，前往下列網址下載字體 SimHei  
+https://link.zhihu.com/?target=https%3A//www.fontpalace.com/not-found/  
+將下載的字體放入下列路徑：  
+.\Lib\site-packages\matplotlib\mpl-data\fonts\ttf  
+並重複法一的動作  
 
 ## bokeh
 ### 引入套件

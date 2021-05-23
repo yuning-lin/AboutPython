@@ -1,6 +1,6 @@
 ## 常用繪圖套件
-[matplotlib](https://github.com/yuning-lin/PythonTips/blob/main/Visualization_Matplotlib.ipynb)：功能彈性較大，但佔的記憶體體積比相對較大  
-[bokeh](https://github.com/yuning-lin/PythonTips/blob/main/Visualization_Bokeh.ipynb)：繪圖佔的記憶體體積比 matplotlib 小很多，繪製結果是以網頁呈現  
+[matplotlib](https://github.com/yuning-lin/PythonTips/blob/main/Visualization/Visualization_Matplotlib.ipynb)：功能彈性較大，但佔的記憶體體積比相對較大  
+[bokeh](https://github.com/yuning-lin/PythonTips/blob/main/Visualization/Visualization_Bokeh.ipynb)：繪圖佔的記憶體體積比 matplotlib 小很多，繪製結果是以網頁呈現  
 [seaborn](https://github.com/yuning-lin/PythonTips/blob/main/Visualization/Visualization_Seaborn.ipynb)：和 pandas 資料結構溝通協調性佳，較 matplotlib 具美學呈現  
 ## 引入套件
 ```python

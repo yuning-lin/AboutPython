@@ -22,3 +22,9 @@ xlsx_data = pd.read_excel(xlsx_file_path, sheet_name='SheetName', header=[3,4,5]
 ### .xml
 ### .txt
 ### .hdf
+```python
+import pandas as pd
+hdf_data = pd.read_hdf('hdf_file_path.hdf')
+```
+另外也有專屬套件 `pyhdf` 讀取 .hdf
+詳見：[參考一](https://blog.csdn.net/lly1122334/article/details/102493134)、[參考二](https://moonbooks.org/Articles/How-to-read-a-MODIS-HDF-file-using-python-/)

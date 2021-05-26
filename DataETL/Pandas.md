@@ -110,10 +110,31 @@ grouped1 = merged2.groupby(['selected']).order.mean().reset_index()
 grouped2 = merged2.groupby(['selected','_merge']).order.mean().reset_index()
 grouped3 = merged2.groupby(['selected','_merge']).order.sum().groupby(level=[1]).apply(lambda x:x/x.sum()).reset_index()
 grouped4 = merged2.groupby('selected').id.apply(np.array).reset_index()
-
+```
+groupby 做迴圈取值或計算，可以搭配多線程使用
+```python
 groupby_action = merged2.groupby(['selected','_merge'])
 print(groupby_action.groups) # 取得所有 group 的 key & index
 for key, group in groupby_action: # groupby 做迴圈
     print(key)
     print(group)
+```
+groupby 多欄位做計算且帶欄位命名
+```python
+df.groupby('group').agg(
+             a_sum=('a', 'sum'),
+             a_mean=('a', 'mean'),
+             b_mean=('b', 'mean'),
+             c_sum=('c', 'sum'),
+             d_range=('d', lambda x: x.max() - x.min())
+)
+
+df.groupby('group') \
+  .apply(lambda x: pd.Series({
+      'a_sum'       : x['a'].sum(),
+      'a_max'       : x['a'].max(),
+      'b_mean'      : x['b'].mean(),
+      'c_d_prodsum' : (x['c'] * x['d']).sum()
+  })
+)
 ```

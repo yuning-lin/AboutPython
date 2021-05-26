@@ -104,11 +104,12 @@ merged2['selected'] = merged2.apply(lambda x:
                                     (x.order>11), axis=1)
 ```
 groupby：針對不同群引用 function  
-EX：計算不同群的平均值、百分比  
+EX：計算不同群的平均值、百分比、將不同群的值包成一個 array  
 ```python
 grouped1 = merged2.groupby(['selected']).order.mean().reset_index()
 grouped2 = merged2.groupby(['selected','_merge']).order.mean().reset_index()
 grouped3 = merged2.groupby(['selected','_merge']).order.sum().groupby(level=[1]).apply(lambda x:x/x.sum()).reset_index()
+grouped4 = merged2.groupby('selected').id.apply(np.array).reset_index()
 
 groupby_action = merged2.groupby(['selected','_merge'])
 print(groupby_action.groups) # 取得所有 group 的 key & index

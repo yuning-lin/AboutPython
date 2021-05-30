@@ -3,7 +3,7 @@
 ### 引入套件
 ```python
 import concurrent.futures # 平行運算
-import tqdm # 呈現運算進度條
+from tqdm import tqdm # 呈現運算進度條
 ```
 ### map
 EX：將較複雜的欄位計算做平行處理

@@ -60,8 +60,27 @@ dtype: object
 get index containing inf, -inf:
 Int64Index([1, 2, 3], dtype='int64')
 ```
-### groupby
+### 欄位空值補值
+```python
+df.col2 = df.col2.fillna(-99) #補特定值
+df.col2 = df.col2.fillna(df.col1) #用其他欄位補值
 ```
+### 隨機排序 dataframe 順序
+```python
+df = df.sample(frac=1).reset_index(drop=True)
+```
+  
+參數|意義
+----|----
+n|要抽出的筆數(int)
+frac|要抽出的比例（0～1 的小數）
+replace|True 為取後放回
+random_state|給固定數字，每次隨機抽取的起始點會一樣
+axis|根據哪個軸隨機抽，0：橫列、1：直欄
+
+
+
+### groupby
 groupby：針對不同群引用 function  
 EX：計算不同群的平均值、百分比、將不同群的值包成一個 array  
 ```python
@@ -70,6 +89,7 @@ grouped2 = merged2.groupby(['selected','_merge']).order.mean().reset_index()
 grouped3 = merged2.groupby(['selected','_merge']).order.sum().groupby(level=[1]).apply(lambda x:x/x.sum()).reset_index()
 grouped4 = merged2.groupby('selected').id.apply(np.array).reset_index()
 ```
+
 groupby 做迴圈取值或計算，可以搭配多線程使用
 ```python
 groupby_action = merged2.groupby(['selected','_merge'])
@@ -78,6 +98,7 @@ for key, group in groupby_action: # groupby 做迴圈
     print(key)
     print(group)
 ```
+
 groupby 多欄位做計算且帶欄位命名
 ```python
 df.groupby('group').agg(

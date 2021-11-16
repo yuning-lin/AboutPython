@@ -48,6 +48,7 @@ result2 = pd.concat(data2_lst, axis=0)
 也可以讓多個 CPU 去佇列中處理尚未運算的工作  
 運算結果仍須是不受先後順序影響，且工作內容可以是非重複性的  
 
+### 無須回到 main process 執行其他動作
 ```python
 import multiprocessing as mp
 
@@ -56,17 +57,47 @@ def job(q):
     for i in range(100):
         result += i*i
     q.put(result) 
-# put 類似 return 的概念，若 result 資訊太大，對 join 運作效果不佳
-# 故建議若 result 為 dataframe 可以先存成 csv，並用 put 回傳 EX：路徑訊息即可
 
 q = mp.Queue()   # 使用 queue 接收 function 的回傳值
 p1 = mp.Process(target=job, args=(q,)) # 注意：若傳入參數只有一個的話，後面要有逗號
 p2 = mp.Process(target=job, args=(q,))
 p1.start()
 p2.start()
+
 p1.join()
 p2.join()
-
 res1 = q.get()
 res2 = q.get()
 ```
+
+### 須回到 main process 執行其他動作
+```python
+import multiprocessing as mp
+
+def job(q):
+    result = 0
+    for i in range(100):
+        result += i*i
+    q.put(result) 
+
+q = mp.Queue()   # 使用 queue 接收 function 的回傳值
+p1 = mp.Process(target=job, args=(q,)) # 注意：若傳入參數只有一個的話，後面要有逗號
+p2 = mp.Process(target=job, args=(q,))
+p1.start()
+p2.start()
+
+res1 = q.get()
+res2 = q.get()
+final = res1 + res2
+p1.join()
+p2.join()
+```
+
+### 函數意義
+* put 類似 return 的概念
+* join 是在等待 child process 執行完畢
+    1. 若 child process 執行完畢後無須回到 main process 執行其他動作 ＞ 先 join 再 get  
+    2. 若 child process 執行完畢後須回到 main process 執行其他動作 ＞ 先 get 再 join；或是直接不用 join
+
+### 參考資料
+* [python multiprocessing guidelines](https://docs.python.org/3.9/library/multiprocessing.html#programming-guidelines)

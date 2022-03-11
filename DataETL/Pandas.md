@@ -6,6 +6,55 @@
 ### [讀檔技巧](https://github.com/yuning-lin/PythonTips/blob/main/ReadFiles.md)
 ### [建立、合併、篩選、map、apply](https://github.com/yuning-lin/PythonTips/blob/main/DataETL/Pandas.ipynb)
 
+### 存檔技巧
+* 存成帶樣式的 EXCEL
+* [style 參考資料](https://pandas.pydata.org/pandas-docs/version/0.24.1/user_guide/style.html)
+* [to_excel 參考資料](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html)
+```python
+## 針對特定 cell 上色
+def highlight_cells(val):
+    if 'fitted' in val and 'carry' not in val:
+        bg_color = '#A8DADC'
+        ft_color = '#1D3557'
+    else:
+        bg_color = '#1D3557'
+        ft_color = '#A8DADC'
+    return 'color: {}; background-color: {}'.format(ft_color, bg_color)
+
+## 針對特定 row 上色
+def highlight_rows(row):
+    value = row.loc['specific_column_name']
+    if 'carry' in value:
+        bg_color = '#1D3557'
+        ft_color = '#A8DADC'
+    else:
+        bg_color = 'white'
+        ft_color = 'black'
+    return ['color: {}; background-color: {}'.format(ft_color, bg_color) for r in row]
+
+## 指定 column 寬度
+def format_col_width(ws):
+    ws.column_dimensions['B'].width = 25
+    ws.column_dimensions['C'].width = 15
+    ws.column_dimensions['D'].width = 15
+    ws.column_dimensions['E'].width = 15
+    ws.column_dimensions['F'].width = 15
+    ws.column_dimensions['G'].width = 15
+```
+```python
+'''
+1. set_properties：將檔案做文字置中、粗體
+2. 並且套用 highlight_rows、highlight_cells
+3. 指定存檔的位置及名稱
+4. 套用指定欄寬
+'''
+writer = pd.ExcelWriter(path+'file_name.xlsx')
+report.style.set_properties(**{'text-align': 'center', 'font-weight': 'bold'}).apply(highlight_rows, axis=1)\
+            .applymap(highlight_cells, subset=['specific_column_name'])\
+            .to_excel(writer, sheet_name='sheet1', header=False, index=False, startrow=10, startcol=1)
+format_col_width(writer.sheets['sheet1'])
+writer.save()
+```
 ### 指定 pandas dataframe 在 console 秀出的大小
 ```python
 pd.set_option('display.max_rows', 50)

@@ -42,6 +42,24 @@ with concurrent.futures.ProcessPoolExecutor(max_workers=4) as executor:
 result1 = pd.concat(data1_lst, axis=0)
 result2 = pd.concat(data2_lst, axis=0)
 ```
+### 問題與解決
+* Q：多線程程式碼和執行 function 在同一檔案下，執行多線程遇到以下問題
+    ```
+    concurrent.futures.process.BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+    ```
+  A：多線程程式碼和執行 function 中間用 `if __name__ == '__main__':` 隔開
+    ```python
+    def function(para):
+        return
+        
+    if __name__ == '__main__':
+        data_lst = []
+        with concurrent.futures.ProcessPoolExecutor(max_workers=4) as executor:
+            futures = [executor.submit(function, group) for _, group in data.groupby(['col_name'])]
+            for fut in tqdm(concurrent.futures.as_completed(futures)):
+                data_lst.append(fut.result()) # result() 若 function 僅回傳一種值則不需要索引
+        result = pd.concat(data_lst, axis=0)
+    ```
 
 ## 佇列（Queue）
 欲將不同工作同時作業除了利用 [airflow](https://github.com/yuning-lin/EnvironmentSetup/tree/main/AirFlow) 作控管外  

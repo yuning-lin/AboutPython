@@ -19,8 +19,23 @@
 ## 變更 google 帳戶安全性 - 使用 google 應用程式密碼寄送信件
 1. 點選寄件者：管理你的 Google 帳戶
 2. 點選左欄`安全性` > 設定`兩步驟驗證`（可以經由手機或其他方式進行驗證）
+	  
+	![](https://github.com/yuning-lin/PythonTips/blob/main/ReportingTool/SendEmail/pictures/two_stage_verification.PNG)
+	  
+	![](https://github.com/yuning-lin/PythonTips/blob/main/ReportingTool/SendEmail/pictures/verrification_by_phone.PNG)
+	  
 3. 完成`兩步驟驗證` > 點選`應用程式密碼`（需重新登入帳戶）> 點選`選取應用程式`選擇`其他(自訂名稱)`
+	  
+	![](https://github.com/yuning-lin/PythonTips/blob/main/ReportingTool/SendEmail/pictures/app_password.PNG)
+	  
+	![](https://github.com/yuning-lin/PythonTips/blob/main/ReportingTool/SendEmail/pictures/choose_app_password.PNG)
+	  
 4. 輸入應用程式名稱`PyEmail`（自訂義不限名稱） > 產生 > 於紅框處取得應用程式密碼
+	  
+	![](https://github.com/yuning-lin/PythonTips/blob/main/ReportingTool/SendEmail/pictures/choose_pyemail.PNG)
+	  
+	![](https://github.com/yuning-lin/PythonTips/blob/main/ReportingTool/SendEmail/pictures/get_app_password.PNG)
+	  
 5. 使用 smtplib 套件登入帳戶用的密碼為：google 寄件人應用程式密碼
 
 ## 常見問題

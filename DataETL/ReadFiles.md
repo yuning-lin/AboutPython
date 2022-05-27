@@ -22,6 +22,14 @@ xlsx_file_path = 'file_name.xlsx'
 xlsx_data = pd.read_excel(xlsx_file_path, sheet_name=None) # 字典形式包含所有 sheet
 xlsx_data = pd.read_excel(xlsx_file_path, sheet_name='SheetName', header=[3,4,5]) # 指定讀的 sheet，以及指定當欄位的列數
 ```
+常見錯誤訊息：  
+```
+raise XLRDError(FILE_FORMAT_DESCRIPTIONS[file_format]+'; not supported')
+xlrd.biffh.XLRDError: Excel xlsx file; not supported
+```
+* 法一：安裝較舊版本，`pip install xlrd==1.2.0`
+* 法二：使用 openpyxl 開啟，`pd.read_excel(path, engine='openpyxl')`
+
 ### .xml
 ### .txt
 ```python

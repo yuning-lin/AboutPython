@@ -31,7 +31,7 @@ np.isnat(np.datetime64('nat'))
 np.isnat(np.datetime64('nAt'))
 
 ## nat 藉由轉換成 object，可用 isna() 辨別
-df = df.astype(object).mask(df.isna(), np.nan) 
+df = df.astype(object).mask(df.isna(), np.nan)
 ```
 
 ## 資料格式

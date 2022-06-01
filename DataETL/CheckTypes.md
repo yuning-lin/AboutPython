@@ -11,10 +11,19 @@ pd.isna(np.nan)
 np.isnan(np.nan)
 math.isnan(np.nan)
 
+## 刪除欄位 col 中元素為 nan 的整列資料
+df.dropna(subset=['col'])
 ## 同直行全為空值則刪除該行
 df.dropna(axis=1, how='all')
 ## 列出欄位名稱為 col 中元素為 nan 的資料
 df[df['col'].isna()]
+df[df['col'].isnull()]
+df[pd.isna(df['col'])]
+## 列出欄位名稱為 col 中元素不為 nan 的資料
+df[df['col'].notna()]
+df[~df['col'].isna()]
+df[df['col'].notnull()]
+df[pd.notna(df['col'])]
 ```
 
 ### None

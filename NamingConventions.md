@@ -1,12 +1,23 @@
 ## 前言
 首要通則避開程式保留字  
 能短就不要長，但也不能短到看不懂意義  
+也可以運用底線來達到對變數的功能控制  
 通常團隊間有常用的規則，follow 即可  
 此文件介紹常為眾人使用的 coding style：PEP8  
 以 79 字元為程式排版斷點原則  
 也有其建議的命名規則，大致整理如下
 
 ## 命名規則
+```python
+## 可印出所有保留字
+print(vars(__builtin__).keys())
+```
+### 底線運用
+* foo_：避免與保留字撞名
+* \_foo：不想被訪問、不想被直接引入
+* \_\_foo：子類別繼承父類別時，同樣命名無法輕易改變父類別內容
+* \_\_foo\_\_：通常是 python 內建的 methods 或 variables，通常不用此命名
+
 ### 程式內文
 類別|規則|範例
 ----|----|----
@@ -53,3 +64,4 @@ column name|全小寫用底線連接單詞，縮寫保留全大寫|iris_DE
 * [PEP8 Code Style - Blog](https://myapollo.com.tw/zh-tw/python-pep8-and-vim-configs/)
 * [資料庫命名規範詳解](https://kknews.cc/zh-tw/news/r5b22ar.html)
 * [資料庫命名規範](https://www.itread01.com/content/1544270418.html)
+* [部落格：Python 底線命名](https://aji.tw/2017/06/python%E4%BD%A0%E5%88%B0%E5%BA%95%E6%98%AF%E5%9C%A8__%E5%BA%95%E7%B7%9A__%E4%BB%80%E9%BA%BC%E5%95%A6/)

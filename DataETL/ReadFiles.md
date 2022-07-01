@@ -29,6 +29,7 @@ xlrd.biffh.XLRDError: Excel xlsx file; not supported
 ```
 * 法一：安裝較舊版本，`pip install xlrd==1.2.0`
 * 法二：使用 openpyxl 開啟，`pd.read_excel(path, engine='openpyxl')`
+* 安全組合：pandas==1.1.4, xlrd==1.2.0
 
 ### .xml
 ### .txt

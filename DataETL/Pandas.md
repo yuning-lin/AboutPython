@@ -127,7 +127,17 @@ replace|True 為取後放回
 random_state|給固定數字，每次隨機抽取的起始點會一樣
 axis|根據哪個軸隨機抽，0：橫列、1：直欄
 
-
+### 去重
+* 去除同樣欄位
+```python
+df = pd.concat([new_df, old_df], axis=1)
+df = df.loc[:,~df.columns.duplicated(keep=False)]
+```
+* 去除指定欄位同樣值列
+```python
+df = pd.concat([new_df, old_df], axis=0)
+df = df.drop_duplicates(subset=['col'], keep=False)
+```
 
 ### groupby
 groupby：針對不同群引用 function  

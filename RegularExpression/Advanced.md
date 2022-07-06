@@ -13,12 +13,26 @@
     ## 中文
     txt = '我很聰明，你是蠢蛋！你確定嗎？（我不確定）。'
     pattern = re.compile('[\w\d\s\（\）]+[；，！？。]')
-    sentence_lst = pattern.findall(txt)
-    ```
+    pattern.findall(txt)
+    ```python
     * 斷句不包含標點符號
     * 使用 re.split
     ```python
     txt = '我很聰明，你是蠢蛋！你確定嗎？（我不確定）。'
     re.split(r'(;|,|!|\?|\.|；|，|！|？|。)\s*', txt) # 保留標點符號
     re.split(r'[;|,|!|\?|\.|；|，|！|？|。]\s*', txt) # 去除標點符號
+    ```
+
+* 擷取文字中的 email
+    * 將完整 email 找出：`tutor@python.org`
+    ```python
+    txt = "To contact us, try tutor@python.org or the previous address tutor@google.com."
+    pattern = re.compile(r'[\w.]+@\w+\.[a-z]{3}')
+    pattern.findall(txt)
+    ```
+    * 利用小括號將搜索字詞分組輸出：`(tutor, python, org)`
+    ```python
+    txt = "To contact us, try tutor@python.org or the previous address tutor@google.com."
+    pattern = re.compile(r'([\w.]+)@(\w+)\.([a-z]{3})')
+    pattern.findall(txt)
     ```

@@ -48,3 +48,11 @@ df = df.astype(object).mask(df.isna(), np.nan)
 ## 確認是否為日期格式
 isinstance(x, datetime)
 ```
+
+```python
+## 將 dataframe 所有為 float 的欄位轉換成 int
+print(df.dtypes)
+float_df = df.select_dtypes(include=['float64'])
+float_col = list(float_df.columns)
+df[float_col] = df[float_col].applymap(np.int64)
+```

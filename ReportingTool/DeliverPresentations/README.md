@@ -26,6 +26,27 @@
 |customized_template_v2.pptx|更新後的 ppt 內容|
 
 
+### 範例三：修改母片
+主要是有別以往加內頁的 `slides` > 選取母片的 `slide_master`  
+先找出想要修改的母片內容（header、footer、...）的 id 等資訊，再進行修改  
+```python
+from pptx import Presentation
+from pptx.dml.color import RGBColor
+from pptx.util import Cm, Pt
+
+ppt = Presentation(PPT_TEMPLATE_PATH)
+for s in ppt.slide_master.shapes:
+    print(s.name)
+    print(s.shape_type)
+    print(s.shape_id)
+    if s.shape_id == 14:
+        print(s.text_frame.paragraphs[0].text)
+        tf = s.text_frame
+        tf.paragraphs[0].text = f"© {datetime.now().year} XXXX All rights reserved"
+        tf.paragraphs[0].font.color.rgb = RGBColor(255, 255, 255)
+        tf.paragraphs[0].font.size = Pt(8)
+```
+
 ## 參考來源
 * [官方文件：python-pptx](https://python-pptx.readthedocs.io/en/latest/user/quickstart.html#)
 * [部落格：用 Python 自動化操作 PPT](https://www.readfog.com/a/1632006902852456448)

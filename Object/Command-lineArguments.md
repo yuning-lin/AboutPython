@@ -40,4 +40,5 @@ print(f'2nd arguments:{args[1]} and type is {type(args[1])}')
 ```
 
 ## 參考資源
+* [Docs：python-pptx Documentation](https://buildmedia.readthedocs.org/media/pdf/python-pptx/latest/python-pptx.pdf)
 * [Blog：Python argparse 教學：比 sys.argv 更好用，讓命令列引數整潔又有序](https://haosquare.com/python-argparse/)

@@ -49,4 +49,6 @@ for s in ppt.slide_master.shapes:
 
 ## 參考來源
 * [官方文件：python-pptx](https://python-pptx.readthedocs.io/en/latest/user/quickstart.html#)
+* [Docs：python-pptx Documentation](https://buildmedia.readthedocs.org/media/pdf/python-pptx/latest/python-pptx.pdf)
 * [部落格：用 Python 自動化操作 PPT](https://www.readfog.com/a/1632006902852456448)
+

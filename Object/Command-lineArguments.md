@@ -31,13 +31,36 @@ parser = argparse.ArgumentParser()
 parser.add_argument("date", type=int,
                     help="current yyyymmdd")
 parser.add_argument("order", type=str,
+                    nargs='?', default='ascending',
                     choices=['ascending', 'descending'],
                     help="display order")
+parser.add_argument("foo", nargs='?', const='c', default='d')
 args = parser.parse_args()
 
 print(f'1st arguments:{args[0]} and type is {type(args[0])}')
 print(f'2nd arguments:{args[1]} and type is {type(args[1])}')
 ```
+* test2.py
+```python
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("foo", nargs='?', const='c', default='d')
+args = parser.parse_args()
+```
+### 補充
+* nargs & default：設定 nargs 為 ? 或者 * 時，表程式可接受引數為 0 個，當不輸入引數時則會運行 default 設定值。如範例中的 order
+  * nargs=5：引數必須剛好是 5 個
+  * nargs='?'：引數必須為 0 或 1 個
+  * nargs='+'：引數至少為 1 個（可以為 1 個含以上）
+  * nargs='\*'：引數可以是任意數量（可以為 0 個含以上）
+* const & default：
+  * 若在終端機輸入 `python test2.py --foo`：傳入的參數值為 c
+  * 若在終端機輸入 `python test2.py`：傳入的參數值為 d
+* choices：包含參數允許值的列表
+* help：在終端機輸入 `python test.py --help`、`python test.py -h` 時會顯示的參數提示字
+
+
 
 ## 參考資源
 * [Docs：python-pptx Documentation](https://buildmedia.readthedocs.org/media/pdf/python-pptx/latest/python-pptx.pdf)

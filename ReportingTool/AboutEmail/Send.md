@@ -55,6 +55,8 @@
 	smtplib.SMTP() --> smtplib.SMTP_SSL("smtp.gmail.com", 465)
 
 ## 參考資源
-* [SMTP 介紹與成功傳輸代碼對應](https://medium.com/seaniap/%E5%A6%82%E4%BD%95%E7%94%A8-pyhon-%E5%AF%84%E9%9B%BB%E5%AD%90%E9%83%B5%E4%BB%B6-1-%E4%BD%BF%E7%94%A8smtplib-gmail-cbf40e592c52)
-* [smtplib 影片教學](https://www.youtube.com/watch?v=YQboCnlOb6Y)
-* [創建 Socket 發送 SMTP](https://ken00535.medium.com/send-gmail-with-python-7aaa822695d6)
+* [RealPython：Sending Emails With Python](https://realpython.com/python-send-email/)
+* [YouTube：smtplib 影片教學](https://www.youtube.com/watch?v=YQboCnlOb6Y)
+* [Blog：SMTP 介紹與成功傳輸代碼對應](https://medium.com/seaniap/%E5%A6%82%E4%BD%95%E7%94%A8-pyhon-%E5%AF%84%E9%9B%BB%E5%AD%90%E9%83%B5%E4%BB%B6-1-%E4%BD%BF%E7%94%A8smtplib-gmail-cbf40e592c52)
+* [Blog：創建 Socket 發送 SMTP](https://ken00535.medium.com/send-gmail-with-python-7aaa822695d6)
+* [Blog：Python寄送Gmail電子郵件實作教學](https://www.learncodewithmike.com/2020/02/python-email.html)

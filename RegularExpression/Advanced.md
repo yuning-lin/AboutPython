@@ -55,3 +55,9 @@
     re.findall(p1, txt)
     re.findall(p2, txt)
     ```
+
+* 擷取文字中屬於中文字的文字
+   ```python
+   re.findall(r'[\u4e00-\u9fff]+', '2022年中秋節(moon festival)最夯活動：在家烤肉')
+   ## ['年中秋節', '最夯活動', '在家烤肉']
+   ```

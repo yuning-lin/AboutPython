@@ -45,6 +45,22 @@ for item in from_folder.all():
     item.move(to_folder)
 ```
 
+## 常見問題
+Credentials 無法用使用者信箱，卻可以用使用者名稱登入  
+如果用信箱登入會出現以下 Error：  
+```
+exchangelib.errors.AutoDiscoverFailed: All steps in the autodiscover protocol failed for email fctsys_test@realtek.com. If you think this is an error, consider doing an official test at https://testconnectivity.microsoft.com
+```
+解決方法：  
+1. 開啟 CMD > 輸入 `SET` > Enter
+2. 會出現很多資訊，其中
+    * USERNAME is the name of the Windows user currently logged in
+    * USERDOMAIN is the domain of the Windows user
+3. 將 USERDOMAIN 用於 Credentials
+    ```python
+    credentials = Credentials(username='USERDOMAIN\\your_username', password=arg_dict['password'])
+    ```
+
 ## 參考資源
 * [ecederstrand：Exchange Web Services client library](https://ecederstrand.github.io/exchangelib/)
 * [github：Exchange Web Services client library](https://github.com/nylas/exchangelib/blob/master/README.md)

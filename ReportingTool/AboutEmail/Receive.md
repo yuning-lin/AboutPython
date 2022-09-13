@@ -46,5 +46,5 @@ for item in from_folder.all():
 ```
 
 ## 參考資源
-* [Exchange Web Services client library](https://ecederstrand.github.io/exchangelib/#setup-and-connecting)
-* [Exchange Web Services client library](https://github.com/nylas/exchangelib/blob/master/README.md)
+* [ecederstrand：Exchange Web Services client library](https://ecederstrand.github.io/exchangelib/)
+* [github：Exchange Web Services client library](https://github.com/nylas/exchangelib/blob/master/README.md)

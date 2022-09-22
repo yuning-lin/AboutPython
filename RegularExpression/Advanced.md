@@ -1,4 +1,5 @@
 ## 使用套件：`re`
+基本用法可參考：[菜鳥教程](https://www.runoob.com/python/python-reg-expressions.html)
 
 ## 進階用法
 * 擷取文章中的句子
@@ -64,8 +65,24 @@
 * 找出所有負數（含小數點、逗號、百分比）
    ```python
    re.findall("-[0-9][0-9,.%]+","-123,456666-123.22-123,456,666,555-1.2%")
+   ## ['-123,456666', '-123.22', '-123,456,666,555', '-1.2%']
    ```
 * 不論中間空白格有多少，找出所有指定文字
    ```python
    re.findall('</font>。\s+Hello', '</font>。         \nHello</font>。  \nHello')
+   ## ['</font>。         \nHello', '</font>。  \nHello']
+   ```
+* 去除文字中的標點符號
+   
+   *注意此處的數字也被去除了*
+   ```python
+   re.sub(r'[.,"\'-?:!;]', '', 'a-*/pple456')
+   ## 'apple'
+   ```
+   *若僅想處理所有標點符號，建議以下方法*
+   ```python
+   import string
+   s = 'a-*/pple456'
+   s = ''.join(c for c in s if c not in string.punctuation)
+   ## 'apple456'
    ```

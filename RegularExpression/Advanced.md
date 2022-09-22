@@ -65,3 +65,7 @@
    ```python
    re.findall("-[0-9][0-9,.%]+","-123,456666-123.22-123,456,666,555-1.2%")
    ```
+* 不論中間空白格有多少，找出所有指定文字
+   ```python
+   re.findall('</font>。\s+Hello', '</font>。         \nHello</font>。  \nHello')
+   ```

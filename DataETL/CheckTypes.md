@@ -1,3 +1,4 @@
+## 使用套件
 ```python
 import numpy as np
 import pandas as pd
@@ -43,12 +44,25 @@ np.isnat(np.datetime64('nAt'))
 df = df.astype(object).mask(df.isna(), np.nan)
 ```
 
-## 資料格式
+## 指定資料格式
+### 確認是否為某種格式
 ```python
-## 確認是否為日期格式
-isinstance(x, datetime)
+isinstance(x, datetime) # datetime, int, str, float
 ```
+### 確認是否為整數
+```python
+def is_integer_number(x):
+    if isinstance(x, int):
+        return True
+    if isinstance(x, float):
+        return x.is_integer()
+    return False
 
+is_integer_number(2.3)
+is_integer_number(2.0)
+is_integer_number(2)
+```
+### 格式轉換
 ```python
 ## 將 dataframe 所有為 float 的欄位轉換成 int
 print(df.dtypes)

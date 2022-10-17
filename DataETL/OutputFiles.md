@@ -31,7 +31,7 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
     workbook = writer.book
     worksheet = writer.sheets[sheet_name]
 
-    num_format = workbook.add_format({'num_format': '#,##0'}) # 將數值欄位轉成千分位帶逗號
+    num_format = workbook.add_format({'num_format': '#,##0.00'}) # 將數值欄位轉成千分位帶逗號，並取到小數點第二位
     for idx in range(len(col_lst)):
         worksheet.set_column(idx, idx, 10, num_format) # 將欄寬設為：10
 

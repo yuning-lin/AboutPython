@@ -139,6 +139,11 @@ df = pd.concat([new_df, old_df], axis=0)
 df = df.drop_duplicates(subset=['col'], keep=False)
 ```
 
+### 一欄位內兩值組為 tuple > 拆成兩欄位
+```python
+df[['b1', 'b2']] = pd.DataFrame(df['b'].tolist(), index=df.index)
+```
+
 ### groupby
 groupby：針對不同群引用 function  
 EX：計算不同群的平均值、百分比、將不同群的值包成一個 array  

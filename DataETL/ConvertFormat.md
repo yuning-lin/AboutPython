@@ -10,10 +10,29 @@ ex_dict = ex_df.groupby(selected_outer_key).apply(lambda x:x.set_index(selected_
 ex_dict = ex_dict.set_index(selected_outer_key)[0].to_dict()
 ```
 ### dictionary to dataframe
+一般的 dictionary
 ```python
 pd.DataFrame({'col1':[0,1,2,3], 'col2':[2,4,6,8]})
 pd.DataFrame.from_dict({'col1':[0,1,2,3], 'col2':[2,4,6,8]})
 ```
+巢狀的 dictionary
+```python
+dict_a = {'col1':{'a':[0,1,2,3], 'b':[2,4,6,8]}, 'col2':{'b':[0,1,2,3], 'a':[2,4,6,8]}}
+
+# 法一：轉成 index
+df = pd.concat({k: pd.DataFrame.from_dict(v, 'index') for k, v in dict_a.items()}, axis=0)
+
+# 法二：轉成 column
+df = pd.DataFrame.from_records(
+    [
+        (level1, level2, value)
+        for level1, level2_dict in dict_a.items()
+        for level2, value in level2_dict.items()
+    ],
+    columns=['level1', 'level2', 'value']
+)
+```
+
 
 ## Dataframe vs Array
 ### dataframe to array

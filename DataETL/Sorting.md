@@ -19,6 +19,7 @@ a 的順序按照 c 的順序排
 a = ['b','a','c']
 c = ['c','e','b','a']
 d = dict(zip(c,range(len(c))))
-a.sort(key=lambda x:d[x])
+# a.sort(key=lambda x:d[x]) # 部分 python 版本不能使用
+a = sorted(a, key=lambda x: d[x])
 print(a)
 ```

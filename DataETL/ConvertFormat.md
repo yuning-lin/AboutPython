@@ -1,3 +1,4 @@
+# 不同數據結構轉換
 ## Dataframe vs Dictionary
 ### dataframe to dictionary
 dataframe 兩欄位合成 key, value 的 dictionary
@@ -50,4 +51,22 @@ data_array = [[0,1], [7,9], [2,6]]
 row_indices = [3, 4, 5]
 column_names = ['col1, 'col2']
 pd.DataFrame(data_array, index=row_indices, columns=column_names)
+```
+
+# 同數據結構變形
+## List
+* lists of list into one list
+```python
+lsts = [[1,2], [3], [5,6]]
+sum(lsts, []) # [1,2,3,5,6]
+```
+* reshape list (but the type into array)
+```python
+np.reshape([0, 0, 1, 1, 2, 2, 3, 3], (4, 2)).T
+# array([[0, 1, 2, 3],
+#        [0, 1, 2, 3]])
+
+np.reshape([0, 0, 1, 1, 2, 2, 3, 3], (2, 4))
+# array([[0, 0, 1, 1],
+#        [2, 2, 3, 3]])
 ```

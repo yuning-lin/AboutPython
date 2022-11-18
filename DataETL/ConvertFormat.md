@@ -45,12 +45,47 @@ pd.DataFrame(data_array, index=row_indices, columns=column_names).to_numpy()
 pd.DataFrame(data_array, index=row_indices, columns=column_names).values
 pd.DataFrame(data_array, index=row_indices, columns=column_names).to_records()
 ```
-### array to Dataframe
+### array to dataframe
 ```python
 data_array = [[0,1], [7,9], [2,6]]
 row_indices = [3, 4, 5]
 column_names = ['col1, 'col2']
 pd.DataFrame(data_array, index=row_indices, columns=column_names)
+```
+
+## timestamp vs datetime
+### timestamp to datetime
+```python
+from datetime import datetime
+
+timestamp = 1545730073
+dt = datetime.fromtimestamp(timestamp)
+```
+
+### datetime to timestamp
+```python
+from datetime import datetime
+
+dt = datetime.now()
+timestamp = datetime.timestamp(dt)
+```
+
+## pandas.\_tslib.Timestamp vs datetime
+### pandas.\_tslib.Timestamp to datetime
+```python
+import pandas as pd
+
+timestamp = pd._tslib.Timestamp('2016-03-03 00:00:00')
+timestamp.to_pydatetime()
+```
+
+### datetime to pandas.\_tslib.Timestamp
+```python
+from datetime import datetime
+import pandas as pd
+
+dt = datetime.now()
+timestamp = pd._tslib.Timestamp(dt)
 ```
 
 # 同數據結構變形

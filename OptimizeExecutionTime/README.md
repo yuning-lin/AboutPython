@@ -36,3 +36,20 @@ mask = (df.col1.isin(['N']))
 
 mask = (df.col1 == 'N')
 ```
+
+## 進度條
+* dataframe apply function：
+```python
+from tqdm import tqdm
+tqdm.pandas() # tqdm: 4.8+
+df.progress_apply(func, axis=1)
+df.groupby([cols]).progress_apply(func)
+```
+
+* dataframe iterrows：
+```python
+from tqdm import tqdm
+
+for i, r in tqdm(df.iterrows(), total=df.shape[0]):
+  print('your work')
+```

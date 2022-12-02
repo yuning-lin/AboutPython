@@ -163,14 +163,20 @@ for key, group in groupby_action: # groupby 做迴圈
     print(group)
 ```
 
-groupby 多欄位做計算且帶欄位命名
+groupby 多欄位做計算且帶欄位命名，依序執行效率由快到慢
 ```python
 df.groupby('group').agg(
-             a_sum=('a', 'sum'),
-             a_mean=('a', 'mean'),
-             b_mean=('b', 'mean'),
-             c_sum=('c', 'sum'),
-             d_range=('d', lambda x: x.max() - x.min())
+    a_sum=('a', 'sum'),
+    a_mean=('a', 'mean'),
+    b_mean=('b', 'mean'),
+    c_sum=('c', 'sum'),
+    d_range=('d', lambda x: x.max() - x.min())
+)
+
+df.groupby('group').agg(
+    a_sum=pd.NamedAgg(column="a", aggfunc="sum"),
+    a_mean=pd.NamedAgg(column="a", aggfunc="mean"),
+    b_mean=pd.NamedAgg(column="b", aggfunc="mean")
 )
 
 df.groupby('group') \

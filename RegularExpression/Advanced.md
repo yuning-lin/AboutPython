@@ -54,8 +54,8 @@
     txt = "王小明(小明)(阿明)"
     p1 = re.compile(r'[(](.*?)[)]', re.S) # 最小匹配
     p2 = re.compile(r'[(](.*)[)]', re.S) # 貪婪匹配
-    re.findall(p1, txt)
-    re.findall(p2, txt)
+    re.findall(p1, txt) # ['小明', '阿明']
+    re.findall(p2, txt) # ['小明)(阿明']
     ```
       
     ```python

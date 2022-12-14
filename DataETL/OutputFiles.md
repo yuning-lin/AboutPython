@@ -20,7 +20,7 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
 
 
 ## .xlsx
-* 客製化欄位設置：
+* 客製化欄位設置：[add_format](https://xlsxwriter.readthedocs.io/format.html)
     1. 凍結欄位
     2. 數值欄位帶千分位逗號
     3. 調整欄寬
@@ -76,3 +76,4 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
 
     writer.save()
     ```
+* [Example: Data Validation and Drop Down Lists](https://xlsxwriter.readthedocs.io/example_data_validate.html)

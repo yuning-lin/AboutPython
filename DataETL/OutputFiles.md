@@ -20,6 +20,7 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
 
 
 ## .xlsx
+* [Doc：xlsxwriter](https://xlsxwriter.readthedocs.io/)
 * 客製化欄位設置：[add_format](https://xlsxwriter.readthedocs.io/format.html)
     1. 凍結欄位
     2. 數值欄位帶千分位逗號
@@ -77,3 +78,24 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
     writer.save()
     ```
 * [Example: Data Validation and Drop Down Lists](https://xlsxwriter.readthedocs.io/example_data_validate.html)
+    ```python
+    import xlsxwriter
+    col_content_dict = {
+        "Name": {"validate": "list", "source": ["Alex", "Amy", "Alen"]},
+        "City": {"validate": "list", "source": ["Taipei", "Tainan", "Taichung"]},
+        "Height": {"validate": "integer", "source": None}
+    }
+
+    for col_idx, col_name in enumerate(df.columns.values):
+        worksheet.write(0, col_idx, col_name, None)
+        col_letter = xlsxwriter.utility.xl_col_to_name(col_idx)
+        worksheet.data_validation(f'{col_letter}2:{col_letter}200', col_content_dict[col_name])
+        worksheet.set_column(col_idx, col_idx, 10)
+    ```
+* 顯示篩選符號
+    ```python
+    writer = pd.ExcelWriter('testtest.xlsx', engine='xlsxwriter')
+    df.to_excel(writer, sheet_name='Sheet1')
+    worksheet = writer.sheets['Sheet1']
+    worksheet.autofilter('A1:BX1')
+    ```

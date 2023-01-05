@@ -13,7 +13,7 @@ a.sort(reverse = True)
 # a = sorted(a, reverse = True)
 print(a)
 ```
-* 按自訂義排序
+* 按自定義排序
 a 的順序按照 c 的順序排
 ```python
 a = ['b','a','c']
@@ -22,4 +22,35 @@ d = dict(zip(c,range(len(c))))
 # a.sort(key=lambda x:d[x]) # 部分 python 版本不能使用
 a = sorted(a, key=lambda x: d[x])
 print(a)
+```
+## dataframe
+* 按大小、正反向排序
+df 的順序按照 col2 由小到大、col3 由大到小排序
+```python
+df = pd.DataFrame({
+    'col1': ['A', 'A', 'B', np.nan, 'D', 'C'],
+    'col2': [2, 1, 9, 8, 7, 4],
+    'col3': [0, 1, 9, 4, 2, 3],
+    'col4': ['a', 'B', 'c', 'D', 'e', 'F']
+})
+df.sort_values(by=['col2', 'col3'], ascending=[True, False])
+```
+
+* 按自定義排序
+df 的順序按照 col4 的順序排
+```python
+df = pd.DataFrame({
+    'col1': ['A', 'A', 'B', np.nan, 'D', 'C'],
+    'col2': [2, 1, 9, 8, 7, 4],
+    'col3': [0, 1, 9, 4, 2, 3],
+    'col4': ['a', 'B', 'c', 'D', 'e', 'F']
+})
+
+# 法一
+df.sort_values(by='col4', key=lambda col: col.str.lower())
+
+# 法二
+col_order = df.col4.drop_duplicates()
+dict_col_order = dict(zip(col_order, range(len(col_order))))
+df.sort_values(by="col4", key=lambda x: x.map(dict_col_order))
 ```

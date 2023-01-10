@@ -53,6 +53,28 @@ column_names = ['col1, 'col2']
 pd.DataFrame(data_array, index=row_indices, columns=column_names)
 ```
 
+## Dataframe vs Json
+### dataframe to json
+```python
+df.to_json()
+```
+
+### json to dataframe
+```python
+import json
+with open('filename.json', encoding='utf-8') as fh:
+    data_dict = json.load(fh)
+
+df = pd.json_normalize(data_dict,
+                       record_path=['nested_col'], # 欲展開的 key
+                       meta=main_cols) # 同一 main_cols 下有多組 nested_col
+
+df = pd.json_normalize(data_dict,
+                       record_path=['nested_col_layer1', 'nested_col_layer2'], # 欲展開的 key 在更下層的 layer
+                       meta=main_cols,
+                       errors='ignore') # 同一 main_cols 下有多組 nested_col_layer1 & nested_col_layer2
+```
+
 ## timestamp vs datetime
 ### timestamp to datetime
 ```python

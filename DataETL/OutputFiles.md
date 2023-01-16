@@ -65,6 +65,12 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
 
     writer.save()
     ```
+* 隱藏欄位
+    ```python
+    worksheet.set_column("A:D", None, None, {'hidden': True})
+
+    writer.save()
+    ```
 * 隱藏 sheet（建議要隱藏的 sheet 放後頭做）
     ```python
     writer = pd.ExcelWriter(file_name, engine='xlsxwriter')

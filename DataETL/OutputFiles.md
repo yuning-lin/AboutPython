@@ -88,9 +88,22 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
 
     for col_idx, col_name in enumerate(df.columns.values):
         worksheet.write(0, col_idx, col_name, None)
-        col_letter = xlsxwriter.utility.xl_col_to_name(col_idx)
+        col_letter = xlsxwriter.utility.xl_col_to_name(col_idx) # idx 轉字母
         worksheet.data_validation(f'{col_letter}2:{col_letter}200', col_content_dict[col_name])
         worksheet.set_column(col_idx, col_idx, 10)
+    ```
+    錯誤訊息
+    ```python
+    UserWarning: Length of list items exceeds Excel's limit of 255, use a formula range instead
+    ```
+    解方
+    ```python
+    n = 100 # 值會寫入的欄
+    city_lst = ["Taipei", "Tainan", "Taichung"]
+    for row_count in range(0, len(city_lst)):
+        worksheet.write(row_count, n, city_lst[row_count]) # 將所有值寫入該欄
+    
+    worksheet.data_validation(f'B2:B200', {"validate": "list", "source": '=$CW$1:$CW$3'}) # 利用引用該欄所有值的方式創造下拉選單
     ```
 * 顯示篩選符號
     ```python

@@ -83,6 +83,11 @@
    re.findall('</font>。\s+Hello', '</font>。         \nHello</font>。  \nHello')
    ## ['</font>。         \nHello', '</font>。  \nHello']
    ```
+* 不論中間空白格有多少，取代成一個空白格
+   ```python
+   re.sub('\s+', ' ', 'Hello       Amy')
+   ## 'Hello Amy'
+   ```
 * 去除文字中的標點符號
    
    *注意此處的數字也被去除了*

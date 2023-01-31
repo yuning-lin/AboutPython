@@ -97,6 +97,11 @@
    ```
    *若僅想處理所有標點符號，建議以下方法*
    ```python
+   # 法一
+   re.sub('\W+','','a-*/pple456')
+   ## 'apple456'
+   
+   # 法二
    import string
    s = 'a-*/pple456'
    s = ''.join(c for c in s if c not in string.punctuation)

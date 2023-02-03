@@ -71,6 +71,7 @@ is_integer_number(2.0)
 is_integer_number(2)
 ```
 ### 確認哪些欄位為數值
+* [數值判斷效率：The benchmark results](https://stackoverflow.com/questions/354038/how-do-i-check-if-a-string-represents-a-number-float-or-int)
 ```python
 num_cols = df.applymap(lambda x: str(x).replace('.', '', 1).isdigit()).all(axis=0)
 lst_num_cols = num_cols[num_cols].index.tolist()
@@ -80,6 +81,9 @@ lst_num_cols = num_cols[num_cols].index.tolist()
 ## 將 dataframe 所有為 float 的欄位轉換成 int
 print(df.dtypes)
 float_df = df.select_dtypes(include=['float64'])
+# df.select_dtypes(exclude = ['object'])
+# df.select_dtypes(include= np.number)
+# df.select_dtypes('number')
 float_col = list(float_df.columns)
 df[float_col] = df[float_col].applymap(np.int64)
 ```

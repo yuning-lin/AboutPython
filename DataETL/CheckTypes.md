@@ -51,6 +51,7 @@ isinstance(x, datetime) # datetime, int, str, float
 ```
 ### 確認是否為整數
 ```python
+# 法一
 def is_integer_number(x):
     if isinstance(x, int):
         return True
@@ -58,9 +59,21 @@ def is_integer_number(x):
         return x.is_integer()
     return False
 
+# 法二
+def is_integer_number(x):
+    if float(x)==int(x):
+        return True
+    else:
+        return False
+
 is_integer_number(2.3)
 is_integer_number(2.0)
 is_integer_number(2)
+```
+### 確認哪些欄位為數值
+```python
+num_cols = df.applymap(lambda x: str(x).replace('.', '', 1).isdigit()).all(axis=0)
+lst_num_cols = num_cols[num_cols].index.tolist()
 ```
 ### 格式轉換
 ```python

@@ -1,3 +1,12 @@
+# 不同型態轉換
+## 數值轉文字
+* 千分位、小數點後幾位
+```python
+num = 10000.3456 
+print(f'{int(num):,d}')
+print(f'{num:,f}')
+print(f'{num:,.2f}')
+```
 # 不同數據結構轉換
 ## Dataframe vs Dictionary
 ### dataframe to dictionary

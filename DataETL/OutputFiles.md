@@ -84,8 +84,10 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
     writer.save()
     ```
 * [Example: Data Validation and Drop Down Lists](https://xlsxwriter.readthedocs.io/example_data_validate.html)
+* [Example: DATA VALIDATION IN EXCEL](https://cxn03651.github.io/write_xlsx/data_validation.html)
     ```python
     import xlsxwriter
+    # validate 選項：any, integer, decimal, list, date, time, length, custom
     col_content_dict = {
         "Name": {"validate": "list", "source": ["Alex", "Amy", "Alen"]},
         "City": {"validate": "list", "source": ["Taipei", "Tainan", "Taichung"]},

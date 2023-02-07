@@ -120,3 +120,41 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
     worksheet = writer.sheets['Sheet1']
     worksheet.autofilter('A1:BX1')
     ```
+* 列顏色交錯
+    * 若僅橫列需要控制格式，則可使用 set_row
+    ```python
+    import xlsxwriter
+    from itertools import cycle
+    
+    writer = pd.ExcelWriter('testtest.xlsx', engine='xlsxwriter')
+    df.to_excel(writer, sheet_name='Sheet1')
+    worksheet = writer.sheets['Sheet1']
+    # 法一：cycle
+    data_format1 = workbook.add_format({'bg_color': '#EEEEEE'})
+    data_format2 = workbook.add_format({'bg_color': '#DDDDDD'})
+    data_format3 = workbook.add_format({'bg_color': '#CCCCCC'})
+    formats = cycle([data_format1, data_format2, data_format3])
+    for row, value in enumerate(data):
+        data_format = next(formats)
+        worksheet.set_row(row, cell_format=data_format)
+    
+    # 法二：邏輯判斷
+    bg_format1 = workbook.add_format({'bg_color': '#78B0DE'}) # blue cell background color
+    bg_format2 = workbook.add_format({'bg_color': '#FFFFFF'}) # white cell background color
+    for i in range(10): # integer odd-even alternation 
+        worksheet.set_row(i, cell_format=(bg_format1 if i%2==0 else bg_format2))
+    ```
+    * 若直行橫列皆有格式設定，會先後彼此覆蓋格式，則建議用：add_table（可將滑鼠移置 excel 模板 > 設計 > 表格樣式 > 停留幾秒，小白框會顯示 style）
+    ```python
+    from xlsxwriter.utility import xl_range
+    df.T.reset_index().T.to_excel(
+        writer, sheet_name='Sheet1', index=False, header=None)
+    worksheet = writer.sheets['Sheet1']
+
+    end_row = len(df.index)
+    end_column = len(df.columns) - 1
+    cell_range = xl_range(0, 0, end_row, end_column) # 指定表格位置
+    worksheet.add_table(cell_range, {'data': df.values.tolist(),
+                                     'columns': [{'header': c} for c in df.columns.tolist()],
+                                     'style': 'Table Style Medium 2'})
+    ```

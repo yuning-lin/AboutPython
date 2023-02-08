@@ -50,6 +50,7 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
     1. 鎖欄
     2. 鎖列
     3. [overwrite 的關係](https://stackoverflow.com/questions/56240667/not-able-to-unlock-cell-with-custom-value-using-pd-xlsxwriter)
+    4. [protect 的調整選項](https://xlsxwriter.readthedocs.io/worksheet.html)
     ```python
     writer = pd.ExcelWriter(file_name, engine='xlsxwriter')
     df.to_excel(writer, sheet_name='Sheet1', index=False)
@@ -112,6 +113,7 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
         worksheet.write(row_count, n, city_lst[row_count]) # 將所有值寫入該欄
     
     worksheet.data_validation(f'B2:B200', {"validate": "list", "source": '=$CW$1:$CW$3'}) # 利用引用該欄所有值的方式創造下拉選單
+    worksheet.data_validation(f'B2:B200', {"validate": "list", "source": '=sheet1!$A$1:$A$3'}) # 利用引用 sheet1 A欄所有值的方式創造下拉選單
     ```
 * 顯示篩選符號
     ```python

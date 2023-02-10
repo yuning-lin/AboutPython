@@ -4,6 +4,7 @@
 
 ## 內建方法
 * [python 中的 \_\_str\_\_ 和 \_\_repr\_\_ 方法](https://blog.csdn.net/z_feng12489/article/details/89708907)
+* [特殊方法－運算子](https://openhome.cc/zh-tw/python/encapsulation/special-method/)
 * [python 何時單用 \_\_hash\_\_ 或 \_\_eq\_\_ 何時一起用](https://blog.csdn.net/sinat_38068807/article/details/86519944)
 
 ## 常見 decorator

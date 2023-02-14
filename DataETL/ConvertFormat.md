@@ -136,3 +136,9 @@ np.reshape([0, 0, 1, 1, 2, 2, 3, 3], (2, 4))
 # array([[0, 0, 1, 1],
 #        [2, 2, 3, 3]])
 ```
+## Set
+* a list of sets into one set
+```python
+sets_list = [set(), {' ', '"'}, {',', '-'}, {'-', ' '}]
+set().union(*sets_list) # {'"', '-', ',', ' '}
+```

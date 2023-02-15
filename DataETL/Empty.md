@@ -4,6 +4,7 @@
 import pandas as pd
 df = pd.DataFrame()
 ```
+  
 * dictionary
 ```python
 from collections import defaultdict
@@ -12,6 +13,7 @@ d = {}
 d = defaultdict() # 可以直接新增 d['key'] = value
 d = defaultdict(list) # 格式為：{'key':[]}
 ```
+  
 * list
 ```python
 l = list()
@@ -22,6 +24,7 @@ l = []
 ```python
 df.empty
 ```
+  
 * dictionary
 ```python
 if not d:
@@ -31,8 +34,9 @@ if not d:
 if len(d)==0:
   print(True)
 ```
-* dictionary
-```list
+  
+* list
+```python
 if not l:
   print(True)
 

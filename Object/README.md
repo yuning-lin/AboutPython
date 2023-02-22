@@ -12,6 +12,9 @@
 * @classmethod、@staticmethod：
   * [[Python物件導向]解析Python物件導向設計的3種類型方法(Instance,Class,Static Method)](https://www.learncodewithmike.com/2020/01/python-method.html)
   * [classmethod() in Python](https://www.geeksforgeeks.org/classmethod-in-python/)
+* @dataclass：
+  * 基礎概念可參：[Python’s Data Classes](https://medium.com/@omerg7493/pythons-data-class-59098f4a2044)
+  * 繼承概念可參：[Dataclass - Inheritance and Composition](https://emilearthur.github.io/fastblog/python/oop/data/2021/08/18/DataClass-Inheritance-and-Composition.html)
 
 ## 學習資源
 * [Blog：[Python物件導向]淺談Python類別(Class)](https://www.learncodewithmike.com/2020/01/python-class.html)

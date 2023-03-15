@@ -74,5 +74,12 @@ df.sort_values(by="col4", key=lambda x: x.map(dict_col_order))
 根據 value 排序，回傳 key
 ```python
 my_dict = {'b': 2, 'a': 3, 'c': 0}
+sorted(my_dict, key=my_dict.get)
 max(my_dict, key=my_dict.get)
+```
+根據 key 排序，回傳 value
+```python
+sorted(my_dict, key=lambda x: x)
+k = max(my_dict, key=lambda x: x)
+my_dict[k]
 ```

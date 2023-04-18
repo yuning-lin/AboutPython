@@ -129,3 +129,17 @@ p2.join()
 
 ### 參考資料
 * [python multiprocessing guidelines](https://docs.python.org/3.9/library/multiprocessing.html#programming-guidelines)
+* [multiprocessing.Pool: When to use apply, apply_async or map?](https://stackoverflow.com/questions/8533318/multiprocessing-pool-when-to-use-apply-apply-async-or-map)
+* [python多进程踩过的坑](https://www.jianshu.com/p/2e6d72ae1770)
+
+### Notes
+```
+                  | Multi-args   Concurrence    Blocking     Ordered-results
+---------------------------------------------------------------------
+Pool.map          | no           yes            yes          yes
+Pool.map_async    | no           yes            no           yes
+Pool.apply        | yes          no             yes          no
+Pool.apply_async  | yes          yes            no           no
+Pool.starmap      | yes          yes            yes          yes
+Pool.starmap_async| yes          yes            no           no
+```

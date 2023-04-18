@@ -70,6 +70,8 @@ result2 = pd.concat(data2_lst, axis=0)
     sys.getrecursionlimit() # get default value
     sys.setrecursionlimit(4000) # there is no rules for setting new value. keep try and error.
     ```
+* Q：`Synchronized objects should only be shared between processes through inheritance`
+  A：[Parent process 分享資料(shared memory) Child process](https://myapollo.com.tw/blog/python-multiprocessing/#parent-process-%e5%88%86%e4%ba%ab%e8%b3%87%e6%96%99shared-memory-child-process)
     
 ## 佇列（Queue）
 欲將不同工作同時作業除了利用 [airflow](https://github.com/yuning-lin/EnvironmentSetup/tree/main/AirFlow) 作控管外  
@@ -127,12 +129,7 @@ p2.join()
     1. 若 child process 執行完畢後無須回到 main process 執行其他動作 ＞ 先 join 再 get  
     2. 若 child process 執行完畢後須回到 main process 執行其他動作 ＞ 先 get 再 join；或是直接不用 join
 
-### 參考資料
-* [python multiprocessing guidelines](https://docs.python.org/3.9/library/multiprocessing.html#programming-guidelines)
-* [multiprocessing.Pool: When to use apply, apply_async or map?](https://stackoverflow.com/questions/8533318/multiprocessing-pool-when-to-use-apply-apply-async-or-map)
-* [python多进程踩过的坑](https://www.jianshu.com/p/2e6d72ae1770)
-
-### Notes
+### multiprocessing.Pool method 比較表
 ```
                   | Multi-args   Concurrence    Blocking     Ordered-results
 ---------------------------------------------------------------------
@@ -143,3 +140,9 @@ Pool.apply_async  | yes          yes            no           no
 Pool.starmap      | yes          yes            yes          yes
 Pool.starmap_async| yes          yes            no           no
 ```
+### 參考資料
+* [python multiprocessing guidelines](https://docs.python.org/3.9/library/multiprocessing.html#programming-guidelines)
+* [multiprocessing.Pool: When to use apply, apply_async or map?](https://stackoverflow.com/questions/8533318/multiprocessing-pool-when-to-use-apply-apply-async-or-map)
+* [python多进程踩过的坑](https://www.jianshu.com/p/2e6d72ae1770)
+
+

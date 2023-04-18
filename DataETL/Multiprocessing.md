@@ -60,7 +60,17 @@ result2 = pd.concat(data2_lst, axis=0)
                 data_lst.append(fut.result()) # result() 若 function 僅回傳一種值則不需要索引
         result = pd.concat(data_lst, axis=0)
     ```
-
+* Q：執行多線程遇到以下問題
+    ```
+    RecursionError: maximum recursion depth exceeded while pickling an object
+    ```
+  A：除了簡化程式運算外，可以利用 sys 改變設置，並設置於整包程式起始程式內
+    ```python
+    import sys
+    sys.getrecursionlimit() # get default value
+    sys.setrecursionlimit(4000) # there is no rules for setting new value. keep try and error.
+    ```
+    
 ## 佇列（Queue）
 欲將不同工作同時作業除了利用 [airflow](https://github.com/yuning-lin/EnvironmentSetup/tree/main/AirFlow) 作控管外  
 也可以讓多個 CPU 去佇列中處理尚未運算的工作  

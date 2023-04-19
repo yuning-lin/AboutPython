@@ -70,7 +70,7 @@ result2 = pd.concat(data2_lst, axis=0)
     sys.getrecursionlimit() # get default value
     sys.setrecursionlimit(4000) # there is no rules for setting new value. keep try and error.
     ```
-* Q：`Synchronized objects should only be shared between processes through inheritance`
+* Q：`Synchronized objects should only be shared between processes through inheritance`  
   A：[Parent process 分享資料(shared memory) Child process](https://myapollo.com.tw/blog/python-multiprocessing/#parent-process-%e5%88%86%e4%ba%ab%e8%b3%87%e6%96%99shared-memory-child-process)
     
 ## 佇列（Queue）

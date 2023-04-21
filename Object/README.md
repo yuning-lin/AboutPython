@@ -16,6 +16,8 @@
 * @dataclass：
   * 基礎概念可參：[Python’s Data Classes](https://medium.com/@omerg7493/pythons-data-class-59098f4a2044)
   * 繼承概念可參：[Dataclass - Inheritance and Composition](https://emilearthur.github.io/fastblog/python/oop/data/2021/08/18/DataClass-Inheritance-and-Composition.html)
+* @overload：讓同個 function 名字隨參數投入不同而切換（multimethods）
+  * [Docs：@typing.overload](https://docs.python.org/3/library/typing.html#typing.overload)
 
 ## 學習資源
 * [Blog：[Python物件導向]淺談Python類別(Class)](https://www.learncodewithmike.com/2020/01/python-class.html)

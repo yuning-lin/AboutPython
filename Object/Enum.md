@@ -17,3 +17,4 @@
 ### 參考資料
 * [Docs：unique](https://docs.python.org/3/library/enum.html#enum.unique)
 * [Python Enums with duplicate values](https://stackoverflow.com/questions/31537316/python-enums-with-duplicate-values)
+* [Python aenum NamedConstant]([https://stackoverflow.com/posts/35968057/timeline](https://stackoverflow.com/questions/31537316/python-enums-with-duplicate-values/35968057#35968057))

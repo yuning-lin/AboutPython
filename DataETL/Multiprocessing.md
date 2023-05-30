@@ -72,7 +72,17 @@ result2 = pd.concat(data2_lst, axis=0)
     ```
 * Q：`Synchronized objects should only be shared between processes through inheritance`  
   A：[Parent process 分享資料(shared memory) Child process](https://myapollo.com.tw/blog/python-multiprocessing/#parent-process-%e5%88%86%e4%ba%ab%e8%b3%87%e6%96%99shared-memory-child-process)
-    
+
+* Q：Django + multiprocessing 在 Linux 環境下可能會遇到 App 無法載入的問題  
+    ```
+    AppRegistryNotReady("Apps aren't loaded yet.")
+    ```  
+  A：[Docs](https://docs.python.org/3/library/multiprocessing.html#contexts-and-start-methods)  
+    ```python
+    import multiprocessing as mp
+    mp.get_all_start_methods() # 各 OS 能使用的 method 不同
+    mp.set_start_method('fork')
+    ```
 ## 佇列（Queue）
 欲將不同工作同時作業除了利用 [airflow](https://github.com/yuning-lin/EnvironmentSetup/tree/main/AirFlow) 作控管外  
 也可以讓多個 CPU 去佇列中處理尚未運算的工作  

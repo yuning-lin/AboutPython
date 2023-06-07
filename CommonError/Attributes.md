@@ -30,8 +30,8 @@
   print(APISimulator.get_value())  # 輸出: 20（仍保留之前的值）
   ```
 * mutable VS immutable，用 dataclass 打包的
-* mutable：immutable 以外的，EX：dict, list, datetime
-* immutable：物件被創出來後其值無法改變，EX：int, float, string, tuple
+* mutable：immutable 以外的，EX：dict, list
+* immutable：物件被創出來後其值無法改變，EX：int, float, string, tuple, datetime
     * 類別屬性（class attributes）
       ```python
       class MyClass:

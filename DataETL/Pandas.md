@@ -154,6 +154,11 @@ grouped3 = merged2.groupby(['selected','_merge']).order.sum().groupby(level=[1])
 grouped4 = merged2.groupby('selected').id.apply(np.array).reset_index()
 ```
 
+groupby：保留欄位 na 值 
+```python
+df.groupby('b', dropna=False).sum()
+```
+
 groupby 做迴圈取值或計算，可以搭配多線程使用
 ```python
 groupby_action = merged2.groupby(['selected','_merge'])

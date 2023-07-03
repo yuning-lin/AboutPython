@@ -144,6 +144,12 @@ df = df.drop_duplicates(subset=['col'], keep=False)
 df[['b1', 'b2']] = pd.DataFrame(df['b'].tolist(), index=df.index)
 ```
 
+### 兩個 series 內的文字 > 組成一欄位
+```python
+df['b3'] = df['b1'] + df['b2']
+df['b4'] = pd.Series(['-'] * len(df)) + df['b2']
+```
+
 ### groupby
 groupby：針對不同群引用 function  
 EX：計算不同群的平均值、百分比、將不同群的值包成一個 array  

@@ -9,6 +9,27 @@ def check_path_exist(path):
         os.makedirs(path)
 ```
 
+* 紀錄 function 運算時間
+```python
+from functools import wraps
+from time import time
+
+def timing(func):
+    @wraps(func)
+    def wrap_func(cls, *args, **kwargs):
+        start_time = time()
+        result = func(cls, *args, **kwargs)
+        end_time = time()
+        spent_time = end_time - start_time
+        print(f' {func.__name__!r} executed in {spent_time:.4f}s')
+        return result
+    return wrap_func
+
+@timing
+def test():
+    print('test')
+```
+
 * 多個 If else 轉 dictionary 形式
   * Method 1
   ```python

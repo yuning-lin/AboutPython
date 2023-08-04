@@ -37,6 +37,25 @@ mask = (df.col1.isin(['N']))
 mask = (df.col1 == 'N')
 ```
 
+## 篩選值
+* list_comprehension 比較快
+* NameError: name 'filter_and_list' is not defined -> 記得 setup 參數要填值
+```python
+import timeit
+
+def filter_and_list():
+    results = list(filter(lambda x: x == 1, range(100000)))
+
+def list_comprehension():
+    results = [x for x in range(100000) if x == 1]
+
+if __name__ == "__main__":
+    print(timeit.timeit("filter_and_list()", number=1000, setup="from __main__ import filter_and_list"))
+    print(timeit.timeit("list_comprehension()", number=1000, setup="from __main__ import list_comprehension"))
+
+```
+
+
 ## 進度條
 * dataframe apply function：
 ```python

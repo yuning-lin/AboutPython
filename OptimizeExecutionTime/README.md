@@ -55,6 +55,39 @@ if __name__ == "__main__":
 
 ```
 
+## 排序
+* list：.sort() 效率優於 sorted()，因為不用再另外指向一變數
+* 若可以 numpy array 為資料結構，運算上有機會比 list 更快
+```python
+import numpy as np
+import pandas as pd
+import time
+
+# 創建一個包含屬性的列表
+class TestObject:
+   def __init__(self, lst):
+       self.lst = lst
+
+data = [TestObject([]) for _ in range(1000000)]
+data_list = data.copy()
+
+# 使用 sorted() 進行排序
+start_time = time.time()
+sorted_list = sorted(data_list, key=lambda obj: len(obj.lst) if obj.lst else -1)
+print("sorted() elapsed time:", time.time() - start_time)
+
+# 使用 .sort() 進行排序
+data_copy = data_list.copy()
+start_time = time.time()
+data_copy.sort(key=lambda obj: len(obj.availableResource) if obj.lst else -1)
+print(".sort() elapsed time:", time.time() - start_time)
+
+# 使用 NumPy 進行排序
+data_np = np.array(data)
+start_time = time.time()
+sorted_np = data_np[np.argsort([len(obj.lst) if obj.lst else -1 for obj in data])]
+print("NumPy sort elapsed time:", time.time() - start_time)
+```
 
 ## 進度條
 * dataframe apply function：

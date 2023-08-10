@@ -8,6 +8,20 @@ print(f'{num:,f}')
 print(f'{num:,.2f}')
 ```
 # 不同數據結構轉換
+## Dataframe vs List
+### column of list into multiple columns
+```python
+df[['col2','col3']] = pd.DataFrame(df.col1.tolist(), index= df.index)
+```
+### multiple columns into column of list
+```python
+df['col1'] = t[['col2','col3']].values.tolist()
+```
+### 將 list 轉置展開在同個欄位，其它欄位補上一樣的值  
+```python
+df2 = df.explode('col1')   
+```
+
 ## Dataframe vs Dictionary
 ### dataframe to dictionary
 dataframe 兩欄位合成 key, value 的 dictionary

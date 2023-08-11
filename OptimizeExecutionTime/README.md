@@ -132,3 +132,6 @@ stats = pstats.Stats('output.prof', stream=stream)
 stats.sort_stats(pstats.SortKey.CUMULATIVE)
 stats.print_stats() # 僅存前 50 個累積耗時最長的函數：stats.print_stats(50)
 ```
+* 參考資源：
+    * [Blog：Python 3 Tutorial 第十二堂（1）效能評測](https://openhome.cc/Gossip/CodeData/PythonTutorial/ProfilePy3.html)
+    * [GitHub：Write cProfile stats to human-readable text file](https://gist.github.com/sean-adler/6f493b6741cc792c1cbe24c896c54344)

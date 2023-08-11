@@ -105,3 +105,30 @@ from tqdm import tqdm
 for i, r in tqdm(df.iterrows(), total=df.shape[0]):
   print('your work')
 ```
+
+## 運算紀錄
+```python
+import cProfile
+import pstats
+
+# 開始 cProfile
+profiler = cProfile.Profile()  
+profiler.enable() 
+
+# 主程式
+your_main_function()
+
+# 停止 cProfile  
+profiler.disable()
+
+# 創建一個統計報告  
+stats = pstats.Stats(profiler)  
+stats.sort_stats(pstats.SortKey.CUMULATIVE)  # 按照執行時間排序  
+  
+# 將資訊存出  
+stats.dump_stats('output.prof')
+stream = open('output.txt', 'w')
+stats = pstats.Stats('output.prof', stream=stream)
+stats.sort_stats(pstats.SortKey.CUMULATIVE)
+stats.print_stats() # 僅存前 50 個累積耗時最長的函數：stats.print_stats(50)
+```

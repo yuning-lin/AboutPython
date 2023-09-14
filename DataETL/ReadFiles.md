@@ -33,9 +33,23 @@ xlrd.biffh.XLRDError: Excel xlsx file; not supported
 
 ### .xml
 ### .txt
+* 讀取一般文字檔案
 ```python
 import pandas as pd
 txt_data = pd.read_table(txt_file_path, header=None, sep=" ", encoding='utf-8') # sep 根據檔案區分欄列間的標號做選填
+```
+* 所有類型的檔案都可以文字的形式做讀取
+```python
+file_path = 'XXX.cs'
+
+def read_txt(file_path):
+    with open(file_path, "r", encoding="utf-8") as f:
+        file_txt = f.read()
+    return file_txt
+
+def save_txt(file_path, content):
+    with open(file_path, "w", encoding="utf-8") as f:
+        f.write(content)
 ```
 ### .hdf
 需先安裝套件： `numpy`、`tables`

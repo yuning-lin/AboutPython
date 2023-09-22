@@ -13,6 +13,10 @@ print(f'{num:,.2f}')
 ```python
 df[['col2','col3']] = pd.DataFrame(df.col1.tolist(), index= df.index)
 ```
+```python
+df[['col2','col3']] = df.col1.str.split(",", expand=True)
+```
+
 ### multiple columns into column of list
 ```python
 df['col1'] = t[['col2','col3']].values.tolist()

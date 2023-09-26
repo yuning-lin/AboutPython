@@ -160,6 +160,11 @@ grouped3 = merged2.groupby(['selected','_merge']).order.sum().groupby(level=[1])
 grouped4 = merged2.groupby('selected').id.apply(np.array).reset_index()
 ```
 
+groupby：針對不同群指定欄位轉成 list
+```python
+df.groupby(["a", "b"]).agg({"c":list}).reset_index()
+```
+
 groupby：保留欄位 na 值 
 ```python
 df.groupby('b', dropna=False).sum()

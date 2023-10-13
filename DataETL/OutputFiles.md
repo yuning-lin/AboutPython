@@ -21,6 +21,12 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
 
 ## .xlsx
 * [Doc：xlsxwriter](https://xlsxwriter.readthedocs.io/)
+* 儲存 df_dict 中的 key 做為 sheet name、value 為 dataframe 存於多個 sheet
+    ```python
+    with pd.ExcelWriter(path) as writer:
+        for key_name, dframe in df_dict.items():
+            dframe.to_excel(writer, sheet_name=key_name, index=False)
+    ```
 * 客製化欄位設置：[add_format](https://xlsxwriter.readthedocs.io/format.html)
     1. 凍結欄位
     2. 數值欄位帶千分位逗號

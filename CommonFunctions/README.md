@@ -9,6 +9,20 @@ def check_path_exist(path):
         os.makedirs(path)
 ```
 
+* 客製化 log
+```python
+def CustomizedLog(file_log='./log/file_{time}.log'):  # add: log folder
+    logger.add(file_log,
+               format="{time:YYYY-MM-DD HH:mm:ss|\
+                       [{level}]|{file}|\
+                       {function}()-[{line}]|\
+                       {message}}",
+                retention="10 days",
+                encoding="utf-8",
+                level="INFO")
+    return logger
+```
+
 * 紀錄 function 運算時間
 ```python
 from functools import wraps

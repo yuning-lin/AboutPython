@@ -11,6 +11,8 @@ def check_path_exist(path):
 
 * 客製化 log
 ```python
+from loguru import logger
+
 def CustomizedLog(file_log='./log/file_{time}.log'):  # add: log folder
     logger.add(file_log,
                format="{time:YYYY-MM-DD HH:mm:ss|\

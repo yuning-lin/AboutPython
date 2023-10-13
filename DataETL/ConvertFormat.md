@@ -43,6 +43,7 @@ ex_dict = ex_dict.set_index(selected_outer_key)[0].to_dict()
 pd.DataFrame({'col1':[0,1,2,3], 'col2':[2,4,6,8]})
 pd.DataFrame.from_dict({'col1':[0,1,2,3], 'col2':[2,4,6,8]})
 pd.DataFrame({'col1':0, 'col2':1}.items(), columns=['name', 'order'])
+pd.concat(df_dict.values(), keys=df_dict.keys()).reset_index(level=0).rename(columns={"level_0": "name"}) # rename dictionary key as new column: name
 ```
 巢狀的 dictionary
 ```python

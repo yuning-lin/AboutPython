@@ -7,7 +7,22 @@ print(f'{int(num):,d}')
 print(f'{num:,f}')
 print(f'{num:,.2f}')
 ```
-# 不同數據結構轉換
+# Dictionary 不同數據結構轉換
+## Dictionary vs Excel with sheets
+### dictionary 的 key 變成 sheet name，value 為 dataframe 存成 sheet
+```python
+def dfs2excel(df_dict, path, is_header=True):
+    """Write dictionary of data frames to separate sheets, within 1 file."""
+    with pd.ExcelWriter(path) as writer:
+        for key_name, dframe in df_dict.items():
+            dframe.to_excel(writer, sheet_name=key_name, index=False, header=is_header)
+```
+### excel 的 sheet name 變成 dictionary 的 key，sheet 變成 dataframe
+```python
+df_dict = pd.read_excel(path, sheet_name=None)
+```
+
+# Dataframe 不同數據結構轉換
 ## Dataframe vs List
 ### column of list into multiple columns
 ```python
@@ -103,7 +118,7 @@ df = pd.json_normalize(data_dict,
                        meta=main_cols,
                        errors='ignore') # 同一 main_cols 下有多組 nested_col_layer1 & nested_col_layer2
 ```
-
+# time 不同數據結構轉換
 ## timestamp vs datetime
 ### timestamp to datetime
 ```python

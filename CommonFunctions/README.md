@@ -22,6 +22,38 @@ def CustomizedLog(file_log='./log/file_{time}.log'):  # add: log folder
     return logger
 ```
 
+* python sqlalchemy insert table by primary key
+```python
+from sqlalchemy import create_engine
+import pandas as pd
+
+q_str = ', '.join(['?'] * len(df.columns))
+c_str = ', '.join(list(df.columns))
+w_str = ', '.join([f't.{i}=s.{i}' for i in df.columns])
+s_str = ', '.join([f's.{i}' for i in df.columns])
+sql = f"""
+        MERGE db_name..table_name  as t
+        USING (Values({q_str})) AS s({c_str})
+        ON t.pri_key1 = s.pri_key1 and t.pri_key2 = s.pri_key2
+        WHEN MATCHED
+            THEN UPDATE SET
+                {w_str}
+        WHEN NOT MATCHED BY TARGET
+            THEN INSERT ({c_str})
+                 VALUES ({s_str});
+        """
+
+engine = create_engine("mssql+pyodbc://{}:{}@{}/{}?driver={}".format(UID, PWD, SERVER, DATABASE, DRIVER))
+con = engine.connect()
+trans = con.begin()
+try:
+  con.execute(sql, df.values.tolist())
+  trans.commit()
+except Exception as ex:
+  trans.rollback()
+```
+
+
 * 紀錄 function 運算時間
 ```python
 from functools import wraps

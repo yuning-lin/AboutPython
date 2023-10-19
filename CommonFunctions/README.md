@@ -22,6 +22,22 @@ def CustomizedLog(file_log='./log/file_{time}.log'):  # add: log folder
     return logger
 ```
 
+```python
+def customized_log(file_log='../log/file_{date}.log'):  
+    # 獲取當前日期  
+    current_date = datetime.now().strftime("%Y-%m-%d")  
+
+    # 替換檔案名稱中的 {date} 佔位符  
+    file_log = file_log.replace("{date}", current_date)  
+
+    logger.add(file_log,  
+               format="{time:YYYY-MM-DD HH:mm:ss}|[{level}]|{file}|{function}()-[{line}]|{message}",  
+               retention="10 days",  
+               encoding="utf-8-sig",  
+               level="INFO")  
+    return logger  
+```
+
 * python sqlalchemy insert table by primary key
 ```python
 from sqlalchemy import create_engine

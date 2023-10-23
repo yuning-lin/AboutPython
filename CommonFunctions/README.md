@@ -69,6 +69,15 @@ except Exception as ex:
   trans.rollback()
 ```
 
+* 取得 SQL table primary key
+```python
+sql = f"""
+SELECT COLUMN_NAME 
+FROM db_name.INFORMATION_SCHEMA.KEY_COLUMN_USAGE 
+WHERE OBJECTPROPERTY(OBJECT_ID(CONSTRAINT_SCHEMA + '.' + QUOTENAME(CONSTRAINT_NAME)), 'IsPrimaryKey') = 1 
+AND TABLE_NAME = '{table_name}'
+"""
+```
 
 * 紀錄 function 運算時間
 ```python

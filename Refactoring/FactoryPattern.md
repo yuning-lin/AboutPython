@@ -8,27 +8,30 @@
 ```python
 class ProductA:
     """A產品線"""
-    def __init__(self):
-        self.name = "A"
+    def __init__(self, name):
+        self.name = name
     def run(self):
         a = "apple"
         b = "banana"
-        process = a+b
+        process = 2*a+b
 
 class ProductB:
     """B產品線"""
-    def __init__(self):
-        self.name = "B"
+    def __init__(self, name):
+        self.name = name
     def run(self):
         c = "citrus"
         b = "banana"
         process = c+2*b
 
-def FactoryInterface(classname):
+def FactoryInterface(classname, name):
     """工廠模式介面函式"""
-    run = {'A':ProductA,'B':ProductB}
-    return run[classname]()
+    dict_run = {'A':ProductA,'B':ProductB}
+    return dict_run[classname](name)
 
-FactoryInterface(A)
-FactoryInterface(B)
+# 生產 A 產品
+FactoryInterface('A', 'apple juice').run()
+# 生產 B 產品
+product_b = FactoryInterface('B', 'banana juice')
+product_b.run()
 ```

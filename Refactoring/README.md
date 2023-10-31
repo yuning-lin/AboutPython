@@ -46,6 +46,7 @@ python 套件名稱：`pip install coverage`
 * ...
 
 ## 重構
+* [工廠模式](https://github.com/yuning-lin/PythonTips/blob/main/Refactoring/FactoryPattern.md)
 
 ## 學習資源
 * [Book：Design Patterns Elements of Reusable Object-Oriented Software](http://www.javier8a.com/itc/bd1/articulo.pdf)

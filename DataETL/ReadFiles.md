@@ -66,8 +66,22 @@ hdf_data = pd.read_hdf('hdf_file_path.hdf')
 ```python
 import gzip  
 import shutil  
-  
-with gzip.open('aaaaa123.txt.gz', 'rb') as f_in:  
-    with open('aaaaa123.txt', 'wb') as f_out:  
+
+# 若處理二進制文件（EX：一個圖像文件），在打開目標文件時應使用 'wb' 模式，而不是 'w' 模式
+with gzip.open('aaaaa123.pat.gz', 'rb') as f_in:  
+    with open('aaaaa123.pat', 'wb') as f_out:  
         shutil.copyfileobj(f_in, f_out) 
+```
+
+### .zip
+```python
+import zipfile  
+  
+# 打開zip檔案  
+with zipfile.ZipFile('my_file.zip', 'r') as zip_ref:  
+    # 列出zip檔案中的所有文件  
+    zip_ref.printdir()  
+  
+    # 解壓縮所有文件  
+    zip_ref.extractall('target_directory')
 ```

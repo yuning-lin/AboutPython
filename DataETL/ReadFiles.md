@@ -1,6 +1,7 @@
 資料檔案的格式百百款  
 pandas 可以處理大部分的種類，但還是會有些例外    
 以下羅列使用過的讀檔方式以及曾經遇過的問題做整理：  
+# 一般讀檔
 ### .CSV
 一般地端的 csv 檔
 ```python
@@ -59,3 +60,14 @@ hdf_data = pd.read_hdf('hdf_file_path.hdf')
 ```
 另外也有專屬套件 `pyhdf` 讀取 .hdf
 詳見：[參考一](https://blog.csdn.net/lly1122334/article/details/102493134)、[參考二](https://moonbooks.org/Articles/How-to-read-a-MODIS-HDF-file-using-python-/)
+
+# 解壓縮
+### .gz
+```python
+import gzip  
+import shutil  
+  
+with gzip.open('aaaaa123.txt.gz', 'rb') as f_in:  
+    with open('aaaaa123.txt', 'wb') as f_out:  
+        shutil.copyfileobj(f_in, f_out) 
+```

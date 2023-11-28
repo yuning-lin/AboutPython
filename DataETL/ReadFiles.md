@@ -85,3 +85,18 @@ with zipfile.ZipFile('my_file.zip', 'r') as zip_ref:
     # 解壓縮所有文件  
     zip_ref.extractall('target_directory')
 ```
+
+### .tar
+```python
+import tarfile  
+  
+# 打開tar檔案  
+with tarfile.TarFile('my_file.tar', 'r') as tar_ref:  
+    # 列出tar檔案中的所有文件  
+    for member in tar_ref.getmembers():  
+        print(member.name)  
+  
+    # 解壓縮所有文件  
+    tar_ref.extractall('target_directory')  
+
+```

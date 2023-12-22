@@ -20,6 +20,12 @@ with concurrent.futures.ProcessPoolExecutor(4) as pool:
         )
     )
 ```
+EX：多個參數投放
+```python
+with ProcessPoolExecutor() as executor:
+    args = [(lst_path[i], key_words) for i in range(len(lst_path))]
+    results = executor.map(func, args)
+```
 ### submit
 EX：將 dataframe 用 groupby 做切分，不同 group 個別丟入做平行運算，且 function 回傳<ins>單值</ins>
 ```python

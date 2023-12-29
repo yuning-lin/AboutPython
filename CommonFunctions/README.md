@@ -101,27 +101,27 @@ def test():
 ```
 
 * 針對巢狀結構文字處理
-  ```python
-  def refactor_with_nested(old_str):
-      stack = []
-      lines = old_str.split("\n")
-      new_str = ""
-      for line in lines:
-          line = line.strip()
-          if line.startswith("巢狀開頭字"):
-              key_word = line.split("巢狀開頭字")[1]
-              stack.append(key_word)
-          elif line.startswith("巢狀結尾字"):
-              if stack:
-                  stack.pop()
-          else:
-              if stack:
-                  for key_word in reversed(stack):
-                      YOUR_OWN_FUNCTION #針對拆出來的結構做處理
-              new_str += line + "\n"
-  			print(new_str)
-      return new_str
-  ```
+```python
+def refactor_with_nested(old_str):
+    stack = []
+    lines = old_str.split("\n")
+    new_str = ""
+    for line in lines:
+        line = line.strip()
+        if line.startswith("巢狀開頭字"):
+            key_word = line.split("巢狀開頭字")[1]
+            stack.append(key_word)
+        elif line.startswith("巢狀結尾字"):
+            if stack:
+                stack.pop()
+        else:
+            if stack:
+                for key_word in reversed(stack):
+                    YOUR_OWN_FUNCTION #針對拆出來的結構做處理
+            new_str += line + "\n"
+      print(new_str)
+    return new_str
+```
 * 多個 If else 轉 dictionary 形式
   * Method 1
   ```python

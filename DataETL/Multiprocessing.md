@@ -89,6 +89,18 @@ result2 = pd.concat(data2_lst, axis=0)
     mp.get_all_start_methods() # 各 OS 能使用的 method 不同
     mp.set_start_method('fork')
     ```
+### multiprocessing.Pool method 比較表
+```
+                  | Multi-args   Concurrence    Blocking     Ordered-results
+---------------------------------------------------------------------
+Pool.map          | no           yes            yes          yes
+Pool.map_async    | no           yes            no           yes
+Pool.apply        | yes          no             yes          no
+Pool.apply_async  | yes          yes            no           no
+Pool.starmap      | yes          yes            yes          yes
+Pool.starmap_async| yes          yes            no           no
+```
+
 ## 佇列（Queue）
 欲將不同工作同時作業除了利用 [airflow](https://github.com/yuning-lin/EnvironmentSetup/tree/main/AirFlow) 作控管外  
 也可以讓多個 CPU 去佇列中處理尚未運算的工作  
@@ -145,18 +157,18 @@ p2.join()
     1. 若 child process 執行完畢後無須回到 main process 執行其他動作 ＞ 先 join 再 get  
     2. 若 child process 執行完畢後須回到 main process 執行其他動作 ＞ 先 get 再 join；或是直接不用 join
 
-### multiprocessing.Pool method 比較表
-```
-                  | Multi-args   Concurrence    Blocking     Ordered-results
----------------------------------------------------------------------
-Pool.map          | no           yes            yes          yes
-Pool.map_async    | no           yes            no           yes
-Pool.apply        | yes          no             yes          no
-Pool.apply_async  | yes          yes            no           no
-Pool.starmap      | yes          yes            yes          yes
-Pool.starmap_async| yes          yes            no           no
-```
-### 參考資料
+### 補充說明
+在 Python 中，Queue 和 Deque 是兩種不同的資料結構，它們主要的差異在於如何添加和移除元素：
+* Queue（隊列）：Queue 是一種先進先出（FIFO）的資料結構。即新元素總是被添加到隊列的尾端，並且總是從隊列的開頭進行元素的移除。
+    * Queue.put()：添加元素
+    * Queue.get()：移除元素
+* Deque（雙端隊列）：Deque 允許您在兩端添加和移除元素。這意味著您既可以使用 FIFO 的方式處理元素，也可以使用後進先出（LIFO）的方式處理元素。
+    * collections.deque：創建一個 deque
+    * deque.append() 或 deque.appendleft()：添加元素
+    * deque.pop() 或 deque.popleft()：移除元素
+
+
+## 參考資料
 * [python multiprocessing guidelines](https://docs.python.org/3.9/library/multiprocessing.html#programming-guidelines)
 * [multiprocessing.Pool: When to use apply, apply_async or map?](https://stackoverflow.com/questions/8533318/multiprocessing-pool-when-to-use-apply-apply-async-or-map)
 * [python多进程踩过的坑](https://www.jianshu.com/p/2e6d72ae1770)

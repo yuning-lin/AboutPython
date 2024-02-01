@@ -172,5 +172,6 @@ p2.join()
 * [python multiprocessing guidelines](https://docs.python.org/3.9/library/multiprocessing.html#programming-guidelines)
 * [multiprocessing.Pool: When to use apply, apply_async or map?](https://stackoverflow.com/questions/8533318/multiprocessing-pool-when-to-use-apply-apply-async-or-map)
 * [python多进程踩过的坑](https://www.jianshu.com/p/2e6d72ae1770)
+* [Difference between queue.queue vs collections.deque in Python](https://www.geeksforgeeks.org/difference-between-queue-queue-vs-collections-deque-in-python/)
 
 

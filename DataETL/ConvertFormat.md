@@ -43,9 +43,15 @@ df2 = df.explode('col1')
 
 ## Dataframe vs Dictionary
 ### dataframe to dictionary
-dataframe 兩欄位合成 key, value 的 dictionary
+dataframe 兩欄位合成 key, value 的 dictionary（selected_key、selected_value 是兩欄位名稱）
 ```python
 ex_dict = ex_df.set_index(selected_key)[selected_value].to_dict()
+```
+```python
+ex_dict = {row.selected_key: row.selected_value for row in ex_df.itertuples()}
+```
+```python
+ex_dict = pd.Series(ex_df.selected_key.values, index=ex_df.selected_value).to_dict()
 ```
 dataframe 三欄位合成巢狀的 dictionary
 ```python

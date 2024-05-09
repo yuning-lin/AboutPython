@@ -118,8 +118,8 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
     for row_count in range(0, len(city_lst)):
         worksheet.write(row_count, n, city_lst[row_count]) # 將所有值寫入該欄
     
-    worksheet.data_validation(f'B2:B200', {"validate": "list", "source": '=$CW$1:$CW$3'}) # 利用引用該欄所有值的方式創造下拉選單
-    worksheet.data_validation(f'B2:B200', {"validate": "list", "source": '=sheet1!$A$1:$A$3'}) # 利用引用 sheet1 A欄所有值的方式創造下拉選單
+    worksheet.data_validation(f'B2:B200', {"validate": "list", "source": '=CWCW1:CWCW3'}) # 利用引用該欄所有值的方式創造下拉選單
+    worksheet.data_validation(f'B2:B200', {"validate": "list", "source": '=sheet1!AA1:AA3'}) # 利用引用 sheet1 A欄所有值的方式創造下拉選單
     ```
 * 顯示篩選符號
     ```python
@@ -127,6 +127,25 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
     df.to_excel(writer, sheet_name='Sheet1')
     worksheet = writer.sheets['Sheet1']
     worksheet.autofilter('A1:BX1')
+    ```
+* 合併欄位
+    ```python
+    from openpyxl import Workbook  
+    from openpyxl.styles import Alignment  
+    # 建立一個新的工作簿  
+    wb = Workbook()  
+    # 選擇工作簿的活動工作表  
+    ws = wb.active  
+      
+    # 為 A1 儲存格添加文字  
+    ws['A1'] = 'Hello World'  
+    # 合併 A1 和 B1  
+    ws.merge_cells('A1:B1')  
+    # 設定 A1 儲存格的對齊方式為置中  
+    ws['A1'].alignment = Alignment(horizontal='center')  
+      
+    # 儲存檔案  
+    wb.save('sample.xlsx')  
     ```
 * 列顏色交錯
     * 若僅橫列需要控制格式，則可使用 set_row

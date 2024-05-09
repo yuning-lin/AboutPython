@@ -128,7 +128,26 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
     worksheet = writer.sheets['Sheet1']
     worksheet.autofilter('A1:BX1')
     ```
-* 合併欄位
+* 改指定位置文字顏色
+    ```python
+    from openpyxl import Workbook  
+    from openpyxl.styles import Font, Color  
+      
+    wb = Workbook()  
+    ws = wb.active  
+      
+    # 創建一個有兩種顏色的字  
+    font = Font(color="000000")  # 黑色  
+    red_font = Font(color="FF0000")  # 紅色  
+    ws['A1'].value = "所有字都黑的但最後一個字變紅色"  
+      
+    # 把最後一個字變紅色  
+    ws['A1'].font = font  
+    ws['A1'].value[-1].font = red_font  
+      
+    wb.save('sample.xlsx')
+    ```
+* 合併儲存格並置中文字
     ```python
     from openpyxl import Workbook  
     from openpyxl.styles import Alignment  

@@ -147,6 +147,19 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
       
     wb.save('sample.xlsx')
     ```
+    ```python
+    writer = pd.ExcelWriter('sample.xlsx', engine='xlsxwriter')
+    # 定義 excel format
+    workbook = writer.book
+    workbook.formats[0].set_font_name('Arial')  # 設全域字體
+
+    # 定義格式
+    format_black = workbook.add_format({'color': 'black', 'align': 'center'})
+    format_red = workbook.add_format({'color': 'red', 'align': 'center'})
+
+    # 指定某個單元格的文字，Hello 為黑色、World 為紅色
+    worksheet.write_rich_string(f'A1', format_black, 'Hello', format_red, 'World')
+    ```
 * 合併儲存格並置中文字
     ```python
     from openpyxl import Workbook  

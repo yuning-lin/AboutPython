@@ -166,6 +166,23 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
     # 儲存檔案  
     wb.save('sample.xlsx')  
     ```
+
+    ```python  
+    import xlsxwriter  
+    
+    # 創建一个新的Excel文件並添加一工作表。  
+    workbook = xlsxwriter.Workbook('sample.xlsx')  
+    worksheet = workbook.add_worksheet()  
+    
+    # 新增格式：藍色背景色、文字置中。  
+    format = workbook.add_format({'bg_color': '#00B0F0', 'align': 'center'})  
+    
+    # 合併指定儲存格，並應用上述格式。  
+    worksheet.merge_range('B3:D3', 'Merged Range', format)  
+    
+    workbook.close()  
+    ```
+
 * 列顏色交錯
     * 若僅橫列需要控制格式，則可使用 set_row
     ```python

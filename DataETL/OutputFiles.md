@@ -128,6 +128,14 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
     worksheet = writer.sheets['Sheet1']
     worksheet.autofilter('A1:BX1')
     ```
+* 改指定位置背景顏色
+    ```python
+    writer = pd.ExcelWriter('testtest.xlsx', engine='xlsxwriter')
+    workbook = writer.book
+    worksheet = workbook.add_worksheet()
+    # 用矩陣位置表示來看，從 [0,2] 到 [1,4] 的位置統一填上背景色
+    worksheet.conditional_format(0, 2, 1, 4, {'type': 'no_errors', 'format': workbook.add_format({'bg_color': 'red'})})
+    ```  
 * 改指定位置文字顏色
     ```python
     from openpyxl import Workbook  
@@ -152,6 +160,7 @@ final_df.to_csv('output.csv', index=False, encoding="utf_8_sig")
     # 定義 excel format
     workbook = writer.book
     workbook.formats[0].set_font_name('Arial')  # 設全域字體
+    worksheet = workbook.add_worksheet()
 
     # 定義格式
     format_black = workbook.add_format({'color': 'black', 'align': 'center'})
